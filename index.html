@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты Миши</title>
+    <title>УЗНАЙКА</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -36,27 +36,34 @@
                     <div class="stat-card">
                         <div class="stat-icon">👥</div>
                         <div class="stat-info">
-                            <div class="stat-number">7</div>
-                            <div class="stat-label">контактов</div>
+                            <div class="stat-number">?</div>
+                            <div class="stat-label">Контактов</div>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon">📊</div>
                         <div class="stat-info">
-                            <div class="stat-number" id="viewCount">247</div>
-                            <div class="stat-label">просмотров</div>
+                            <div class="stat-number" id="viewCount">?</div>
+                            <div class="stat-label">Просмотров</div>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon">⭐</div>
                         <div class="stat-info">
-                            <div class="stat-number">4.8</div>
-                            <div class="stat-label">рейтинг</div>
+                            <div class="stat-number">?</div>
+                            <div class="stat-label">Рейтинг</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="hero-section">
+                    <!-- Добавленный блок приветствия -->
+                    <div class="greeting" id="userGreeting">
+                        <span class="greeting-text">Привет, </span>
+                        <span class="user-name" id="userName">Пользователь</span>
+                        <span class="greeting-emoji">✋</span>
+                    </div>
+                    
                     <h2 class="hero-title">
                         <span class="title-text">Информация</span>
                         <div class="title-underline"></div>
@@ -64,10 +71,10 @@
                     <p class="hero-subtitle">Нажми на кнопку ниже и узнай как ты записан</p>
                 </div>
 
-                <!-- Кнопка вызова списка -->
-                <div class="button-container" id="buttonContainer">
-                    <button class="reveal-btn" onclick="revealContacts()">
-                        <span class="btn-text">Узнать как записан</span>
+                <!-- Кнопка вызова модального окна -->
+                <div class="button-container">
+                    <button class="reveal-btn" onclick="showModal()">
+                        <span class="btn-text">Узнать как я записан</span>
                         <div class="btn-shine"></div>
                         <div class="btn-particles">
                             <span></span>
@@ -76,104 +83,6 @@
                             <span></span>
                         </div>
                     </button>
-                </div>
-
-                <!-- Список контактов -->
-                <div class="contacts-container" id="contactsContainer">
-                    <div class="contacts-list">
-                        <!-- Основные контакты -->
-                        <div class="contact-item">
-                            <div class="contact-avatar">
-                                <div class="avatar-icon">👨‍💼</div>
-                            </div>
-                            <div class="contact-info">
-                                <h3>Миша парень</h3>
-                                <p class="contact-status">+7********97</p>
-                            </div>
-                            <div class="contact-badge">Основной</div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-avatar">
-                                <div class="avatar-icon">🤝</div>
-                            </div>
-                            <div class="contact-info">
-                                <h3>Миша лучший друг</h3>
-                                <p class="contact-status">+7********31</p>
-                            </div>
-                            <div class="contact-badge">Друг</div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-avatar">
-                                <div class="avatar-icon">🤡</div>
-                            </div>
-                            <div class="contact-info">
-                                <h3>Клоун 🤡</h3>
-                                <p class="contact-status">+7********29</p>
-                            </div>
-                            <div class="contact-badge">Аноним</div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-avatar">
-                                <div class="avatar-icon">👦</div>
-                            </div>
-                            <div class="contact-info">
-                                <h3>Сын</h3>
-                                <p class="contact-status">+7********86</p>
-                            </div>
-                            <div class="contact-badge">Семья</div>
-                        </div>
-
-                        <!-- Друзья -->
-                        <div class="contact-item">
-                            <div class="contact-avatar">
-                                <div class="avatar-icon">💕</div>
-                            </div>
-                            <div class="contact-info">
-                                <h3>Краш)</h3>
-                                <p class="contact-status">+7********27</p>
-                            </div>
-                            <div class="contact-badge">Любовь</div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-avatar">
-                                <div class="avatar-icon">👯</div>
-                            </div>
-                            <div class="contact-info">
-                                <h3>Миша друг</h3>
-                                <p class="contact-status">+7********21</p>
-                            </div>
-                            <div class="contact-badge">Друг</div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-avatar">
-                                <div class="avatar-icon">🎮</div>
-                            </div>
-                            <div class="contact-info">
-                                <h3>Михон Школа</h3>
-                                <p class="contact-status">+7********55</p>
-                            </div>
-                            <div class="contact-badge">Школа</div>
-                        </div>
-                    </div>
-
-                    <!-- Кнопка скрыть - такого же дизайна -->
-                    <div class="button-container" id="hideButtonContainer">
-                        <button class="reveal-btn hide-btn" onclick="hideContacts()">
-                            <span class="btn-text">Скрыть</span>
-                            <div class="btn-shine"></div>
-                            <div class="btn-particles">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </button>
-                    </div>
                 </div>
 
                 <!-- Недавние просмотры -->
@@ -199,7 +108,31 @@
                 </div>
             </main>
         </div>
+
+        <!-- Модальное окно -->
+        <div class="modal-overlay" id="modalOverlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <div class="modal-icon">⚠️</div>
+                    <h3 class="modal-title">Внимание!</h3>
+                    <button class="modal-close" onclick="closeModal()">×</button>
+                </div>
+                
+                <div class="modal-content">
+                    <p class="modal-text">
+                        Для получения доступа с сервису необходимо <b>Подтвердить</b>, что этот номер телефона принадлежит вам!
+                    </p>
+                </div>
+
+                <div class="modal-actions">
+                    <button class="modal-btn confirm-btn" onclick="confirmAction()">
+                        <span>Подтвердить</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
+    
 
     <script src="app.js"></script>
 </body>

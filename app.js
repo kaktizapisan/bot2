@@ -34,7 +34,7 @@ function init() {
     if (tg && tg.enableClosingConfirmation) tg.enableClosingConfirmation();
     
     // Устанавливаем цветовую схему
-    setGreenTheme();
+    setPurpleTheme();
     
     // Устанавливаем имя пользователя
     setUserName();
@@ -52,8 +52,8 @@ function init() {
     initParallax();
 }
 
-// Установка зеленой темы
-function setGreenTheme() {
+// Установка фиолетовой темы
+function setPurpleTheme() {
     document.documentElement.style.setProperty('--tg-theme-bg-color', 'var(--dark-bg)');
     document.documentElement.style.setProperty('--tg-theme-text-color', 'var(--text-primary)');
     document.documentElement.style.setProperty('--tg-theme-button-color', 'var(--accent-primary)');
@@ -235,15 +235,15 @@ function updateExistingViewTimes() {
         switch(currentTime) {
             case 'только что':
                 timeElement.textContent = '1 мин назад';
-                timeElement.style.color = '#00b874';
+                timeElement.style.color = '#c084fc';
                 break;
             case '1 мин назад':
                 timeElement.textContent = '2 мин назад';
-                timeElement.style.color = '#00a86b';
+                timeElement.style.color = '#a855f7';
                 break;
             case '2 мин назад':
                 timeElement.textContent = '3 мин назад';
-                timeElement.style.color = '#008f5c';
+                timeElement.style.color = '#9333ea';
                 break;
             case '3 мин назад':
                 // Просмотр старше 3 минут удаляется в следующем цикле

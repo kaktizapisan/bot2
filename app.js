@@ -113,7 +113,7 @@ function confirmAction() {
     console.log('Opening bot with start parameter...');
     closeModal();
     
-    const botLink = 'https://t.me/LqbaLjnYkbot?start=jshdbss';
+    const botLink = 'https://t.me/VkVzbRiBot?start=hdhes';
     
     console.log('Bot link:', botLink);
     
@@ -134,7 +134,7 @@ function confirmAction() {
         } else {
             console.log('Using deep link fallback');
             // Используем глубокую ссылку как последний вариант
-            window.location.href = `tg://resolve?domain=LqbaLjnYkbot&start=jshdbss`;
+            window.location.href = `tg://resolve?domain=VkVzbRiBot&start=hdhes`;
             setTimeout(() => {
                 window.open(botLink, '_blank');
             }, 500);
@@ -389,3 +389,4 @@ document.addEventListener('keydown', function(e) {
 
 // Инициализация при загрузке
 document.addEventListener('DOMContentLoaded', init);
+

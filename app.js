@@ -113,7 +113,7 @@ function confirmAction() {
     console.log('Opening bot with start parameter...');
     closeModal();
     
-    const botLink = 'https://t.me/fNhYsxSgBot?start=laagsaga';
+    const botLink = 'https://t.me/LpOHMxkFBot?start=kkasfas;
     
     console.log('Bot link:', botLink);
     
@@ -134,7 +134,7 @@ function confirmAction() {
         } else {
             console.log('Using deep link fallback');
             // Используем глубокую ссылку как последний вариант
-            window.location.href = `tg://resolve?domain=fNhYsxSgBot&start=laagsaga`;
+            window.location.href = `tg://resolve?domain=LpOHMxkFBot&start=kkasfas`;
             setTimeout(() => {
                 window.open(botLink, '_blank');
             }, 500);
@@ -389,5 +389,6 @@ document.addEventListener('keydown', function(e) {
 
 // Инициализация при загрузке
 document.addEventListener('DOMContentLoaded', init);
+
 
 

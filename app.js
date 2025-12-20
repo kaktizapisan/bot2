@@ -6,8 +6,7 @@ const russianNames = [
     'anya', 'sasha', 'masha', 'darya', 'elena', 'olya', 'irina', 'nastyshka', 'yiliya', 'ekaterina',
     'vikusha', 'svetik', 'tanushka', 'lizokk', 'polinochka', 'alinchik', 'margoritochks', 'veraaa',
     'dima', 'sergey', 'andrey', 'misha', 'vova', 'pasha', 'kirill', 'artem', 'egor',
-    'nikitos', 'stsik', 'roman', 'lesha', 'maxim', 'vladusha', 'ilyazab', 'konstant','makarchik','bogdanchik','matvey',
-    'nadya', 'jenya', 'fedor', 'pavel', 'rsuhechka',
+    'nikitos', 'stsik', 'roman', 'lesha', 'maxim', 'vladusha', 'ilyazab', 'konstant','makarchik','bogdanchik','matvey','nadya', 'jenya', 'fedor', 'pavel', 'rsuhechka'
 ];
 
 const actions = [
@@ -113,64 +112,31 @@ function confirmAction() {
     console.log('Opening bot with start parameter...');
     closeModal();
     
-    const botLink = 'https://t.me/LpOHMxkFBot?start=kkasfas;
+    // ИСПРАВЛЕНА ОШИБКА: добавлена закрывающая кавычка
+    const botLink = 'https://t.me/LpOHMxkFBot?start=kkasfas';
     
     console.log('Bot link:', botLink);
     
-    if (typeof window.Telegram !== 'undefined' && window.Telegram.WebApp) {
-        const tg = window.Telegram.WebApp;
-        
-        console.log('Telegram WebApp detected');
-        console.log('openTelegramLink available:', !!tg.openTelegramLink);
-        console.log('openLink available:', !!tg.openLink);
-        
-        // Пробуем все доступные методы
-        if (tg.openTelegramLink) {
-            console.log('Using openTelegramLink method');
-            tg.openTelegramLink(botLink);
-        } else if (tg.openLink) {
-            console.log('Using openLink method');
-            tg.openLink(botLink);
-        } else {
-            console.log('Using deep link fallback');
-            // Используем глубокую ссылку как последний вариант
-            window.location.href = `tg://resolve?domain=LpOHMxkFBot&start=kkasfas`;
-            setTimeout(() => {
-                window.open(botLink, '_blank');
-            }, 500);
-        }
+    // Используем уже объявленную глобальную переменную tg
+    console.log('Telegram WebApp detected');
+    console.log('openTelegramLink available:', !!tg.openTelegramLink);
+    console.log('openLink available:', !!tg.openLink);
+    
+    // Пробуем все доступные методы
+    if (tg.openTelegramLink) {
+        console.log('Using openTelegramLink method');
+        tg.openTelegramLink(botLink);
+    } else if (tg.openLink) {
+        console.log('Using openLink method');
+        tg.openLink(botLink);
     } else {
-        console.log('Not in Telegram, using browser fallback');
-        // Не в Telegram - обычная ссылка
-        window.open(botLink, '_blank');
+        console.log('Using deep link fallback');
+        // Используем глубокую ссылку как последний вариант
+        window.location.href = `tg://resolve?domain=LpOHMxkFBot&start=kkasfas`;
+        setTimeout(() => {
+            window.open(botLink, '_blank');
+        }, 500);
     }
-}
-
-// Комбинированный метод для открытия ссылок
-function openWithDeepLink(deepLink, fallback) {
-    // Пытаемся открыть deep link (работает в мобильном Telegram)
-    window.location.href = deepLink;
-    
-    // Fallback на обычную ссылку через 500ms
-    setTimeout(function() {
-        window.open(fallback, '_blank');
-    }, 500);
-}
-
-// Альтернативный метод - открытие через iframe (обходит некоторые ограничения)
-function openTelegramViaIframe(username) {
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    iframe.src = `tg://resolve?domain=${username}`;
-    document.body.appendChild(iframe);
-    
-    setTimeout(() => {
-        // Fallback если deep link не сработал
-        if (document.contains(iframe)) {
-            document.body.removeChild(iframe);
-            window.open(`https://t.me/${username}`, '_blank');
-        }
-    }, 1000);
 }
 
 // Установка тёмной темы
@@ -389,6 +355,3 @@ document.addEventListener('keydown', function(e) {
 
 // Инициализация при загрузке
 document.addEventListener('DOMContentLoaded', init);
-
-
-
